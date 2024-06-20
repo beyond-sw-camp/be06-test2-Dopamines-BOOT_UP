@@ -55,4 +55,13 @@ public class ProjectBoardController {
         }
         return ResponseEntity.ok("게시물 삭제에 성공했습니다.");
     }
+
+    @RequestMapping(method=RequestMethod.PUT, value = "/{idx}")
+    public ResponseEntity<?> updateProjectPost(@PathVariable("idx")int idx, @RequestBody ProjectBoardReq projectBoardReq) {
+        int result = service.update(idx, projectBoardReq);
+        if (result <= 0) {
+            return ResponseEntity.ok("게시물 수정에 실패했습니다.");
+        }
+        return ResponseEntity.ok("게시물 수정에 성공했습니다.");
+    }
 }

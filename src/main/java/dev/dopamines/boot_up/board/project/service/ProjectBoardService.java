@@ -29,4 +29,8 @@ public class ProjectBoardService {
     public int delete(int idx) {
         return repository.delete(idx);
     }
+
+    public int update(int idx, ProjectBoardReq projectBoardReq) {
+        return repository.update(idx, projectBoardReq);
+    }
 }
