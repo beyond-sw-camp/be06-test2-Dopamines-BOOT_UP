@@ -1,8 +1,11 @@
 package dev.dopamines.boot_up.board.notice.repository;
 
 import dev.dopamines.boot_up.board.notice.model.request.NoticeCreateReq;
+import dev.dopamines.boot_up.board.notice.model.response.NoticeReadRes;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class NoticeRepository {
@@ -38,6 +41,50 @@ public class NoticeRepository {
         return result;
     }
 
+    public List<NoticeReadRes> findAll() {
+        String sql = """
+                SELECT notice.title, notice.contents, admin.name, notice.created_at FROM notice LEFT JOIN admin ON notice.admin_idx = admin.idx
+                """;
+        List<NoticeReadRes> noticeReadRes = jdbcTemplate.query(
+                sql,
+                // 실행 결과를 DTO로 옮기는 코드 작성
+                (rs, rownum) -> {
+                    NoticeReadRes result = new NoticeReadRes(
+                            rs.getString("notice.title"),
+                            rs.getString("notice.contents"),
+                            rs.getString("admin.name"),
+                            rs.getTimestamp("notice.created_at")
+                    );
+                    return result;
+                }
+        );
+
+        return noticeReadRes;
+    }
+
+    public NoticeReadRes findById(int idx) {
+        String sql = """
+                SELECT notice.title, notice.contents, admin.name, notice.created_at 
+                FROM notice LEFT JOIN admin ON notice.admin_idx = admin.idx 
+                WHERE notice.idx=?
+                """;
+        NoticeReadRes noticeReadRes = jdbcTemplate.queryForObject(
+                sql,
+                // 실행 결과를 DTO로 옮기는 코드 작성
+                (rs, rownum) -> {
+                    NoticeReadRes result = new NoticeReadRes(
+                            rs.getString("notice.title"),
+                            rs.getString("notice.contents"),
+                            rs.getString("admin.name"),
+                            rs.getTimestamp("notice.created_at")
+                    );
+                    return result;
+                },
+                idx
+        );
+
+        return noticeReadRes;
+
     public int delete(int idx) {
         String sql = """
                 DELETE FROM notice 
@@ -47,6 +94,7 @@ public class NoticeRepository {
         int result = jdbcTemplate.update(sql, idx);
 
         return result;
+
     }
 
 }
