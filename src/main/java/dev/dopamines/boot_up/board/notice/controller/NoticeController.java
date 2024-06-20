@@ -8,7 +8,9 @@ import dev.dopamines.boot_up.board.notice.service.NoticeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/board/notice")
@@ -39,6 +41,7 @@ public class NoticeController {
         }
     }
 
+
     @RequestMapping(method = RequestMethod.GET, value = "/findAll")
     public ResponseEntity<List<NoticeReadRes>> findAll() {
 
@@ -51,5 +54,16 @@ public class NoticeController {
 
         NoticeReadRes result = noticeService.find(idx);
         return ResponseEntity.ok(result);
+
+    @RequestMapping(method = RequestMethod.GET, value = "/delete")
+    public ResponseEntity delete(@RequestParam int idx) {
+        int result = noticeService.delete(idx);
+
+        if(result <= 0) {
+            return ResponseEntity.ok("게시글이 삭제되지 않음");
+        } else {
+            return ResponseEntity.ok("게시글이 삭제됨");
+        }
+
     }
 }

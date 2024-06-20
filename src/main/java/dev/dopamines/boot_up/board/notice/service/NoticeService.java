@@ -29,6 +29,7 @@ public class NoticeService {
         return result;
     }
 
+
     public List<NoticeReadRes> findAll() {
         List<NoticeReadRes> noticeReadResList = noticeRepository.findAll();
 
@@ -39,5 +40,10 @@ public class NoticeService {
         NoticeReadRes noticeReadRes = noticeRepository.findById(idx);
 
         return noticeReadRes;
+
+    public int delete(int idx) {
+        int result = noticeRepository.delete(idx);
+
+        return result;
     }
 }

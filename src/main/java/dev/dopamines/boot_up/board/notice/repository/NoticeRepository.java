@@ -84,6 +84,17 @@ public class NoticeRepository {
         );
 
         return noticeReadRes;
+
+    public int delete(int idx) {
+        String sql = """
+                DELETE FROM notice 
+                WHERE idx=?
+                """;
+
+        int result = jdbcTemplate.update(sql, idx);
+
+        return result;
+
     }
 
 }

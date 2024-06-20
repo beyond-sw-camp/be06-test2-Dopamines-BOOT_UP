@@ -65,4 +65,16 @@ public class ProjectBoardRepository {
     public int delete(int idx) {
         return jdbcTemplate.update("DELETE FROM project WHERE idx = ? ",idx);
     }
+
+    public int update(int idx, ProjectBoardReq dto) {
+        return jdbcTemplate.update("UPDATE project SET title = ?, video = ?, contents = ?, course_num = ?, team_name = ?, member = ? WHERE idx = ?",
+                dto.getTitle(),
+                dto.getVideo(),
+                dto.getContents(),
+                dto.getCourseNum(),
+                dto.getTeamName(),
+                dto.getMember(),
+                idx
+        );
+    }
 }
