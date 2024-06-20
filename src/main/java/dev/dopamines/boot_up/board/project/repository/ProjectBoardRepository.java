@@ -61,4 +61,8 @@ public class ProjectBoardRepository {
         );
         return projects;
     }
+
+    public int delete(int idx) {
+        return jdbcTemplate.update("DELETE FROM project WHERE idx = ? ",idx);
+    }
 }
