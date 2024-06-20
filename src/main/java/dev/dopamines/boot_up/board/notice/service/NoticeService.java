@@ -25,4 +25,10 @@ public class NoticeService {
 
         return result;
     }
+
+    public int delete(int idx) {
+        int result = noticeRepository.delete(idx);
+
+        return result;
+    }
 }
