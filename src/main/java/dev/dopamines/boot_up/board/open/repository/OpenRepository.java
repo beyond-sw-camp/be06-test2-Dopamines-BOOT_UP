@@ -1,6 +1,7 @@
 package dev.dopamines.boot_up.board.open.repository;
 
 import dev.dopamines.boot_up.board.open.model.request.OpenCreateReq;
+import dev.dopamines.boot_up.board.open.model.request.OpenUpdateReq;
 import dev.dopamines.boot_up.board.open.model.response.OpenReadRes;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -45,5 +46,10 @@ public class OpenRepository {
                 rs.getString("author"),
                 rs.getString("image")
         ));
+    }
+
+    public void update(OpenUpdateReq dto) {
+        String sql = "UPDATE open_board SET title = ?, content = ?, author = ?, image = ? WHERE idx = ?";
+        jdbcTemplate.update(sql, dto.getTitle(), dto.getContent(), dto.getAuthor(), dto.getImage());
     }
 }

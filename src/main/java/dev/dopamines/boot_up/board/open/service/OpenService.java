@@ -1,6 +1,7 @@
 package dev.dopamines.boot_up.board.open.service;
 
 import dev.dopamines.boot_up.board.open.model.request.OpenCreateReq;
+import dev.dopamines.boot_up.board.open.model.request.OpenUpdateReq;
 import dev.dopamines.boot_up.board.open.model.response.OpenCreateRes;
 import dev.dopamines.boot_up.board.open.model.response.OpenReadRes;
 import dev.dopamines.boot_up.board.open.repository.OpenRepository;
@@ -22,5 +23,9 @@ public class OpenService {
 
     public OpenReadRes read(int idx) {
         return openRepository.findById(idx);
+    }
+
+    public void update(OpenUpdateReq dto) {
+        openRepository.update(dto);
     }
 }
