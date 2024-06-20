@@ -46,4 +46,13 @@ public class ProjectBoardController {
         }
         return ResponseEntity.ok(res);
     }
+
+    @RequestMapping(method=RequestMethod.DELETE, value = "/{idx}")
+    public ResponseEntity<?> delete(@PathVariable("idx") int idx) {
+        int result = service.delete(idx);
+        if (result <= 0) {
+            return ResponseEntity.ok("게시물 삭제에 실패했습니다.");
+        }
+        return ResponseEntity.ok("게시물 삭제에 성공했습니다.");
+    }
 }
