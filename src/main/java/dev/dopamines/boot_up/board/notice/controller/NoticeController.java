@@ -5,10 +5,7 @@ import dev.dopamines.boot_up.board.notice.model.request.NoticeCreateReq;
 import dev.dopamines.boot_up.board.notice.model.response.NoticeCreateRes;
 import dev.dopamines.boot_up.board.notice.service.NoticeService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/board/notice")
@@ -36,6 +33,17 @@ public class NoticeController {
             return ResponseEntity.ok("게시글이 수정되지 않음");
         } else {
             return ResponseEntity.ok("게시글이 수정됨");
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/delete")
+    public ResponseEntity delete(@RequestParam int idx) {
+        int result = noticeService.delete(idx);
+
+        if(result <= 0) {
+            return ResponseEntity.ok("게시글이 삭제되지 않음");
+        } else {
+            return ResponseEntity.ok("게시글이 삭제됨");
         }
     }
 }
