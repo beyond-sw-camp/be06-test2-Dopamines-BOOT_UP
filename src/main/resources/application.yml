@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: ${MARIADB_URL}
+    username: ${USERNAME}
+    password: ${PASSWORD}
+    driver-class-name: org.mariadb.jdbc.Driver
+
