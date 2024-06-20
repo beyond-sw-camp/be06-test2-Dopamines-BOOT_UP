@@ -1,5 +1,6 @@
 package dev.dopamines.boot_up.board.notice.controller;
 
+import com.sun.jna.platform.win32.WinNT;
 import dev.dopamines.boot_up.board.notice.model.request.NoticeCreateReq;
 import dev.dopamines.boot_up.board.notice.model.response.NoticeCreateRes;
 import dev.dopamines.boot_up.board.notice.service.NoticeService;
@@ -19,8 +20,22 @@ public class NoticeController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/create")
-    public ResponseEntity<NoticeCreateRes> create(@RequestBody NoticeCreateReq dto) {
-        NoticeCreateRes response = noticeService.create(dto);
-        return ResponseEntity.ok(response);
+    public ResponseEntity create(@RequestBody NoticeCreateReq dto) {
+        int result = noticeService.create(dto);
+        if(result <= 0) {
+            return ResponseEntity.ok("게시글이 저장되지 않음");
+        } else {
+            return ResponseEntity.ok("게시글이 저장됨");
+        }
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/update")
+    public ResponseEntity update(@RequestBody NoticeCreateReq dto) {
+        int result = noticeService.update(dto);
+        if(result <= 0) {
+            return ResponseEntity.ok("게시글이 수정되지 않음");
+        } else {
+            return ResponseEntity.ok("게시글이 수정됨");
+        }
     }
 }
