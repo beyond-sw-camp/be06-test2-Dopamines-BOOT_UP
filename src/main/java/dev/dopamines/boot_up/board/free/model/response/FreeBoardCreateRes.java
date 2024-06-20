@@ -4,23 +4,22 @@ import java.sql.Timestamp;
 
 public class FreeBoardCreateRes {
     private String title;
-    private String contents;
+    private String content;
     private String image;
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private int user_idx;
     private String file;
-    private int courseNum;
 
     public FreeBoardCreateRes(String title) {
         this.title = title;
-        this.contents = contents;
+        this.content = content;
         this.image = image;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.user_idx = user_idx;
         this.file = file;
-        this.courseNum = courseNum;
+
     }
 
     public String getTitle() {
@@ -31,12 +30,12 @@ public class FreeBoardCreateRes {
         this.title = title;
     }
 
-    public String getContents() {
-        return contents;
+    public String getContent() {
+        return content;
     }
 
-    public void setContents(String contents) {
-        this.contents = contents;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getImage() {
@@ -79,11 +78,4 @@ public class FreeBoardCreateRes {
         this.file = file;
     }
 
-    public int getCourseNum() {
-        return courseNum;
-    }
-
-    public void setCourseNum(int courseNum) {
-        this.courseNum = courseNum;
-    }
 }
