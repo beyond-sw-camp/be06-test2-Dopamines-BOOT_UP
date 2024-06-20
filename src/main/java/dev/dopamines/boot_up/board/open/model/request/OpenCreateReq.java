@@ -7,16 +7,16 @@ public class OpenCreateReq {
     private String content;
     private String author;
     private String image;
-    private Timestamp created_at;
-    private Timestamp updated_at;
+//    private Timestamp created_at;
+//    private Timestamp updated_at;
 
     public OpenCreateReq(String title, String content, String author, String image, Timestamp created_at, Timestamp updated_at) {
         this.title = title;
         this.content = content;
         this.author = author;
         this.image = image;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+//        this.created_at = created_at;
+//        this.updated_at = updated_at;
     }
 
     public String getTitle() {
@@ -51,19 +51,19 @@ public class OpenCreateReq {
         this.image = image;
     }
 
-    public Timestamp getCreated_at() {
-        return created_at;
-    }
+//    public Timestamp getCreated_at() {
+//        return created_at;
+//    }
 
-    public void setCreated_at(Timestamp created_at) {
-        this.created_at = created_at;
-    }
+//    public void setCreated_at(Timestamp created_at) {
+//        this.created_at = created_at;
+//    }
 
-    public Timestamp getUpdated_at() {
-        return updated_at;
-    }
+//    public Timestamp getUpdated_at() {
+//        return updated_at;
+//    }
 
-    public void setUpdated_at(Timestamp updated_at) {
-        this.updated_at = updated_at;
-    }
+//    public void setUpdated_at(Timestamp updated_at) {
+//        this.updated_at = updated_at;
+//    }
 }

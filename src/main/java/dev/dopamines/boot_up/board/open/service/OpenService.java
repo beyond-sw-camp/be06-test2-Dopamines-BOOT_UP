@@ -1,34 +1,26 @@
 package dev.dopamines.boot_up.board.open.service;
 
 import dev.dopamines.boot_up.board.open.model.request.OpenCreateReq;
-import dev.dopamines.boot_up.board.open.repository.OpenRepository;
 import dev.dopamines.boot_up.board.open.model.response.OpenCreateRes;
 import dev.dopamines.boot_up.board.open.model.response.OpenReadRes;
-import dev.dopamines.boot_up.board.open.model.response.OpenUpdateRes;
-import dev.dopamines.boot_up.board.open.model.response.OpenDeleteRes;
+import dev.dopamines.boot_up.board.open.repository.OpenRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OpenService {
 
+    private final OpenRepository openRepository;
+
     public OpenService(OpenRepository openRepository) {
+        this.openRepository = openRepository;
     }
 
-    public OpenCreateRes create(OpenCreateReq dto){
-        return new OpenCreateRes();
+    public OpenCreateRes create(OpenCreateReq dto) {
+        openRepository.create(dto);
+        return new OpenCreateRes(dto.getTitle() + " 저장됨");
     }
 
-    public OpenReadRes read(int id) {
-        return new OpenReadRes();
+    public OpenReadRes read(int idx) {
+        return openRepository.findById(idx);
     }
-
-    public OpenUpdateRes update(int idx) {
-        return new OpenUpdateRes();
-    }
-
-    public OpenDeleteRes delete(int idx) {
-        return new OpenDeleteRes();
-    }
-
-
 }
