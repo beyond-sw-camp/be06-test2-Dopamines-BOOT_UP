@@ -38,15 +38,15 @@ public class NoticeRepository {
         return result;
     }
 
-//    public void delete(NoticeCreateReq dto) {
-//        String sql = """
-//                INSERT INTO notice
-//                (title, contents, image, created_at, updated_at, admin_idx, file, course_num)
-//                 values
-//                 (?, ?, null, now(), now(), ?, null, null);
-//                """;
-//
-//        jdbcTemplate.update(sql, dto.getTitle(), dto.getContents(), 1);
-//    }
+    public int delete(int idx) {
+        String sql = """
+                DELETE FROM notice 
+                WHERE idx=?
+                """;
+
+        int result = jdbcTemplate.update(sql, idx);
+
+        return result;
+    }
 
 }
