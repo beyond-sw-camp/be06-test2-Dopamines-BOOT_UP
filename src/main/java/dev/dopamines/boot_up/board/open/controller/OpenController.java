@@ -28,4 +28,10 @@ public class OpenController {
         OpenReadRes response = openService.read(idx);
         return ResponseEntity.ok(response);
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> delete(@RequestParam int idx) {
+        openService.delete(idx);
+        return ResponseEntity.ok("삭제 완료");
+    }
 }

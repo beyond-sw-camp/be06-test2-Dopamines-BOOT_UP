@@ -46,4 +46,9 @@ public class OpenRepository {
                 rs.getString("image")
         ));
     }
+
+    public void deleteById(int idx) {
+        String sql = "DELETE FROM open_board WHERE idx = ?";
+        jdbcTemplate.update(sql, idx);
+    }
 }
