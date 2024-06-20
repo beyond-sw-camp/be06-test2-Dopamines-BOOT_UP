@@ -21,4 +21,8 @@ public class ProjectBoardService {
     public ProjectBoardRes findById(int idx) {
         return repository.findById(idx);
     }
+
+    public List<ProjectBoardRes> findAll(){
+        return repository.findAll();
+    }
 }
