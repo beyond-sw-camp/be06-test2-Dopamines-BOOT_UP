@@ -5,5 +5,3 @@ spring:
     password: ${PASSWORD}
     driver-class-name: org.mariadb.jdbc.Driver
 
-server:
-  port: 6020
