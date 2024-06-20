@@ -16,11 +16,11 @@ public class FreeBoardRepository {
     public void create(FreeCreateReq dto){
         String sql = """
                 INSERT INTO free_board
-                (title,content,author,image,created_at,updated_at)
+                (title,content,author,image,created_at,updated_at, user_idx)
                  values 
-                 (?, ?, ?,null, now(), now());
+                 (?, ?, ?,null, now(), now(), ?);
                 """;
 
-        jdbcTemplate.update(sql, dto.getTitle(), dto.getContent(), 1);
+        jdbcTemplate.update(sql, dto.getTitle(), dto.getContent(), dto.getAuthor(), 1);
     }
 }
