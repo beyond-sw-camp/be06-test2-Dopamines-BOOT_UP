@@ -1,8 +1,11 @@
 package dev.dopamines.boot_up.board.project.controller;
 
 import dev.dopamines.boot_up.board.project.model.request.ProjectBoardReq;
+import dev.dopamines.boot_up.board.project.model.response.ProjectBoardRes;
 import dev.dopamines.boot_up.board.project.service.ProjectBoardService;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,5 +27,23 @@ public class ProjectBoardController {
             return ResponseEntity.ok("게시글이 저장되지 않음");
         }
         return ResponseEntity.ok("게시글이 저장됨");
+    }
+
+    @RequestMapping(method=RequestMethod.GET, value = "/{idx}")
+    public ResponseEntity<?> findProjectById(@PathVariable("idx") int idx) {
+        ProjectBoardRes res = service.findById(idx);
+        if (res == null) {
+            return ResponseEntity.ok("해당 프로젝트 게시물을 찾지 못했습니다.");
+        }
+        return ResponseEntity.ok(res);
+    }
+
+    @RequestMapping(method=RequestMethod.GET)
+    public ResponseEntity<?> findAll() {
+        List<ProjectBoardRes> res = service.findAll();
+        if (res == null) {
+            return ResponseEntity.ok("프로젝트 게시물들을 찾지 못했습니다.");
+        }
+        return ResponseEntity.ok(res);
     }
 }
