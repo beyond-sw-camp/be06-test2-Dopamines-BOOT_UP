@@ -3,6 +3,7 @@ package dev.dopamines.boot_up.board.notice.model.request;
 import java.sql.Timestamp;
 
 public class NoticeCreateReq {
+    private int idx;
     private String title;
     private String contents;
     private String image;
@@ -15,7 +16,8 @@ public class NoticeCreateReq {
     public NoticeCreateReq() {
     }
 
-    public NoticeCreateReq(String title, String contents, String image, Timestamp createdAt, Timestamp updatedAt, int adminIdx, String file, int courseNum) {
+    public NoticeCreateReq(int idx, String title, String contents, String image, Timestamp createdAt, Timestamp updatedAt, int adminIdx, String file, int courseNum) {
+        this.idx = idx;
         this.title = title;
         this.contents = contents;
         this.image = image;
@@ -24,6 +26,14 @@ public class NoticeCreateReq {
         this.adminIdx = adminIdx;
         this.file = file;
         this.courseNum = courseNum;
+    }
+
+    public int getIdx() {
+        return idx;
+    }
+
+    public void setIdx(int idx) {
+        this.idx = idx;
     }
 
     public String getTitle() {
