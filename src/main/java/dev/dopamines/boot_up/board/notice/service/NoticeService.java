@@ -14,9 +14,15 @@ public class NoticeService {
         this.noticeRepository = noticeRepository;
     }
 
-    public NoticeCreateRes create(NoticeCreateReq dto) {
-        noticeRepository.create(dto);
+    public int create(NoticeCreateReq dto) {
+        int result = noticeRepository.create(dto);
 
-        return new NoticeCreateRes(dto.getTitle() + " 저장됨");
+        return result;
+    }
+
+    public int update(NoticeCreateReq dto) {
+        int result = noticeRepository.update(dto);
+
+        return result;
     }
 }
