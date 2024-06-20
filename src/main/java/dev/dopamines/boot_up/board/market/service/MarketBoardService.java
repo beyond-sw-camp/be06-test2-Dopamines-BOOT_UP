@@ -20,4 +20,5 @@ public class MarketBoardService {
             return "저장 실패";
         }
     }
+
 }
