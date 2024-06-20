@@ -25,4 +25,8 @@ public class ProjectBoardService {
     public List<ProjectBoardRes> findAll(){
         return repository.findAll();
     }
+
+    public int delete(int idx) {
+        return repository.delete(idx);
+    }
 }
