@@ -18,9 +18,9 @@ public class NoticeRepository {
 
     public int create(NoticeCreateReq dto) {
         String sql = """
-                INSERT INTO notice 
+                INSERT INTO notice
                 (title, contents, image, created_at, updated_at, admin_idx, file, course_num)
-                 values 
+                 values
                  (?, ?, null, now(), now(), ?, null, null);
                 """;
 
@@ -31,8 +31,8 @@ public class NoticeRepository {
 
     public int update(NoticeCreateReq dto) {
         String sql = """
-                UPDATE notice 
-                SET title=?, contents=?, image=?, updated_at=now(), admin_idx=?, file=?, course_num=? 
+                UPDATE notice
+                SET title=?, contents=?, image=?, updated_at=now(), admin_idx=?, file=?, course_num=?
                 WHERE idx=?
                 """;
 
@@ -64,8 +64,8 @@ public class NoticeRepository {
 
     public NoticeReadRes findById(int idx) {
         String sql = """
-                SELECT notice.title, notice.contents, admin.name, notice.created_at 
-                FROM notice LEFT JOIN admin ON notice.admin_idx = admin.idx 
+                SELECT notice.title, notice.contents, admin.name, notice.created_at
+                FROM notice LEFT JOIN admin ON notice.admin_idx = admin.idx
                 WHERE notice.idx=?
                 """;
         NoticeReadRes noticeReadRes = jdbcTemplate.queryForObject(
@@ -84,10 +84,10 @@ public class NoticeRepository {
         );
 
         return noticeReadRes;
-
+    }
     public int delete(int idx) {
         String sql = """
-                DELETE FROM notice 
+                DELETE FROM notice
                 WHERE idx=?
                 """;
 
