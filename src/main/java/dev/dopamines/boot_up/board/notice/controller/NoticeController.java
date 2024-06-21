@@ -55,6 +55,7 @@ public class NoticeController {
         NoticeReadRes result = noticeService.find(idx);
         return ResponseEntity.ok(result);
 
+    }
     @RequestMapping(method = RequestMethod.GET, value = "/delete")
     public ResponseEntity delete(@RequestParam int idx) {
         int result = noticeService.delete(idx);

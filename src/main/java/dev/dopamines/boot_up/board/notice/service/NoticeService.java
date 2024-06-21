@@ -40,7 +40,7 @@ public class NoticeService {
         NoticeReadRes noticeReadRes = noticeRepository.findById(idx);
 
         return noticeReadRes;
-
+    }
     public int delete(int idx) {
         int result = noticeRepository.delete(idx);
 
